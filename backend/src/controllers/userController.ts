@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/userModel";
 import { songIdSchema } from "../schemas/song.schema";
+import {ENV} from "../config/env.config"
 import z from "zod";
 import jwt from "jsonwebtoken";
 
@@ -22,7 +23,7 @@ export const toggleSaveSong = async (
     const token = authHeader.split(" ")[1];
     const verifiedData = jwt.verify(
       token,
-      "aquivalapalabrasecreta",
+      ENV.JWT_SECRETWORD,
     ) as TokenPayLoad;
 
     const userId = verifiedData.id;
