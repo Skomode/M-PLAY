@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "git": "^0.1.5",
+    "zod": "^4.4.3"
+  }
+}
