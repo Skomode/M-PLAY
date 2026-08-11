@@ -3,10 +3,6 @@ import jwt from "jsonwebtoken";
 import { VetTokenPayload } from "../types/express";
 import { ENV } from "../config/env.config";
 
-interface TokenPayload {
-  id: string;
-}
-
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   try {
     const authHeader = req.headers.authorization;
