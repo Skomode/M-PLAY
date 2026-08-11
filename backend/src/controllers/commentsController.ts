@@ -58,11 +58,6 @@ export const getComment = async (
       .populate("postedBy", "nickName")
       .select("body postedBy _id");
 
-    if (comments.length === 0) {
-      return res
-        .status(200)
-        .json({ mensaje: "La cancion no tiene comentarios aun" });
-    }
 
     const commentsFormatted = comments.map((comment: any) => ({
       commentId: comment._id,
@@ -70,7 +65,6 @@ export const getComment = async (
       user: comment.postedBy ? comment.postedBy.nickName : "Usuario anonimo",
     }));
 
-    console.log(`Comentarios de la cancion: (${songId}):`, commentsFormatted);
     return res.status(200).json(commentsFormatted);
   } catch (error) {
     console.error("ERROR AL BUSCAR COMENTARIOS DE LA CANCION", error);

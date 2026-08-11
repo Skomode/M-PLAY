@@ -9,8 +9,6 @@ import {
   SongIdInput,
   songIdSchema,
 } from "../schemas/song.schema";
-
-import {Comment} from "../models/commentModel"
 import jwt from "jsonwebtoken";
 
 export const postSong = async (
@@ -93,16 +91,8 @@ export const getSongByArtist = async (
     }
 
     const { uploadedBy } = validateArtist.data;
-
     const songs = await Song.find({ uploadedBy });
-    if (songs.length === 0) {
-      return res.status(200).json({
-        mensaje: "El artista no tiene canciones subidas",
-        songs: [],
-      });
-    }
 
-    console.log(`🎵 Canciones del artista (${uploadedBy}):`, songs);
 
     return res.status(200).json(songs);
   } catch (error) {
@@ -151,7 +141,7 @@ export const deleteSong = async (
 };
 
 export const PutSong = async (
-  req: Request<SongIdInput, {}, Partial<SongInput>>, 
+  req: Request<SongIdInput, {}, Partial<SongInput>>,
   res: Response,
 ): Promise<Response> => {
   try {
@@ -173,11 +163,9 @@ export const PutSong = async (
       { returnDocument: "after" },
     );
     if (!updatedSong) {
-      return res
-        .status(403)
-        .json({
-          mensaje: "Canción no encontrada o no tienes permisos para editarla",
-        });
+      return res.status(403).json({
+        mensaje: "Canción no encontrada o no tienes permisos para editarla",
+      });
     }
 
     return res

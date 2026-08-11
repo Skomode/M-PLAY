@@ -14,19 +14,7 @@ export const toggleSaveSong = async (
   res: Response,
 ): Promise<Response> => {
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({
-        mensaje: "no cuenta con un token para realizar esta operacion",
-      });
-    }
-    const token = authHeader.split(" ")[1];
-    const verifiedData = jwt.verify(
-      token,
-      ENV.JWT_SECRETWORD,
-    ) as TokenPayLoad;
-
-    const userId = verifiedData.id;
+    const userId = req.user;
     const validatedSongId = songIdSchema.safeParse(req.params)
 
     if(!validatedSongId.success){

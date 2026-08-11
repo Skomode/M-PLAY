@@ -89,7 +89,7 @@ export const login = async (
 
     const userExistente = await User.findOne({ eMail: eMail });
 
-    if (!userExistente) {
+    if (!userExistente) { 
       return res.status(401).json({
         mensaje:
           "Usuario no encontrado, por favor revise las credenciales de nuevo o registrese para acceder.",
