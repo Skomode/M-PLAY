@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getPresignedUrl } from "../controllers/uploadController";
-import { authMiddleware } from "../middlewares/authmiddleware"; // Usa tu middleware de autenticación de usuario
+import { authMiddleware } from "../middlewares/authmiddleware";
 
 const router = Router();
 
