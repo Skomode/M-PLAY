@@ -8,7 +8,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({
-        mensaje: "Acceso denegado: Se requiere credencial de veterinario",
+        mensaje: "Acceso denegado: Se requiere credencial de usuario",
       });
     }
 

@@ -17,7 +17,7 @@ export const generateUploadPresignedUrl = async (
   fileType: string
 ) => {
   const extension = fileType.split("/")[1] || "bin";
-  const fileName = `${folder}/${crypto.randomUUID()}.${extension}`;
+  const fileName = `${folder}/${crypto.randomUUID()}.${extension}`;  //hasheo de url temporal para el post del archivo
 
   const command = new PutObjectCommand({
     Bucket: ENV.R2_BUCKET_NAME,
