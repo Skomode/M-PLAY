@@ -7,7 +7,7 @@ interface IUser {
   savedSongs: string[];
 }
 
-interface AuthState {
+interface IAuthState {
   user: IUser | null;
   token: string | null;
   isAuthenticated: boolean;
@@ -16,7 +16,7 @@ interface AuthState {
   logout: ()=> void,
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<IAuthState>((set) => ({
   user: null, 
   token: null,
   isAuthenticated: false,
@@ -27,9 +27,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     isAuthenticated: true,
   }),
 
-  logut: () => set ({
-      user: null, 
+  logout: () => set({
+  user: null, 
   token: null,
   isAuthenticated: false,
   }),
-})
+}));
