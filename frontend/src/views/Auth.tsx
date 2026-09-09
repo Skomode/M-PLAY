@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { SonicButton } from "../components/SonicButton";
+import { useState } from "react";
 import { Link } from "react-router";
 import type { ChangeEvent, FormEvent } from "react";
 import type { IAuthCredentials } from "../types/types";
@@ -32,7 +34,6 @@ const Auth = () => {
   return (
     <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-8 shadow-2xl">
-        {/* Cabecera dinámica */}
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-white">
             {isRegistering ? "Crea tu cuenta" : "Bienvenido de nuevo"}
@@ -44,7 +45,6 @@ const Auth = () => {
           </p>
         </div>
 
-        {/* Formulario unificado */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {isRegistering && (
             <div>
@@ -93,15 +93,12 @@ const Auth = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2.5 rounded-lg transition-colors text-sm mt-2"
-          >
+          <SonicButton>
             {isRegistering ? "Registrarse" : "Iniciar Sesión"}
-          </button>
+          </SonicButton>
+
         </form>
 
-        {/* Botón de Toggle para cambiar de vista */}
         <div className="text-center mt-6">
           <button
             onClick={() => setIsRegistering(!isRegistering)}
@@ -113,7 +110,6 @@ const Auth = () => {
           </button>
         </div>
 
-        {/* Enlace para volver al reproductor si lo desea */}
         <div className="text-center mt-4 border-t border-zinc-800 pt-4">
           <Link to="/" className="text-xs text-zinc-500 hover:text-zinc-300">
             ← Volver al reproductor
