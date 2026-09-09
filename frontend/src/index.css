@@ -111,3 +111,26 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+@keyframes marquee {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes equalizer-wave {
+  0%, 100% {
+    transform: scaleY(0.3);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleY(1.2);
+    opacity: 1;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 8s linear infinite;
+}
