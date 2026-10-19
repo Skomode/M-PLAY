@@ -1,4 +1,3 @@
-import React from "react";
 import { usePlayerStore } from "../store/usePlayerStore";
 
 const SongCard = () => {
